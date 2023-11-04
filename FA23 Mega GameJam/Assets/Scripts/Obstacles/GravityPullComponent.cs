@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlanetPullComponent : MonoBehaviour
+public class GravityPullComponent : MonoBehaviour
 {
     [SerializeField] private float Gravity = -10.0f;
 
