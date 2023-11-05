@@ -164,7 +164,6 @@ GameObject:
   - component: {fileID: 6370878840045577556}
   - component: {fileID: 7272953006894366555}
   - component: {fileID: 5809087335705902591}
-  - component: {fileID: 7640322109322693870}
   - component: {fileID: 6629605270127448952}
   m_Layer: 0
   m_Name: Start Planet
@@ -188,7 +187,7 @@ Transform:
   - {fileID: 1371772579607880686}
   - {fileID: 5296826792674810748}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2806337647123994668
 MeshFilter:
@@ -275,29 +274,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 45
   LaunchCamera: {fileID: 0}
-  LaunchTimer: {fileID: 0}
-  Rocket: {fileID: 1339342341936927965}
---- !u!114 &7640322109322693870
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2359496679260343285}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6523bc08dabb24d56b75a02b6e49364c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 1000
-  launcherCam: {fileID: 0}
-  LaunchCamera: {fileID: 0}
-  lineRenderer: {fileID: 0}
-  targetLayers:
-    serializedVersion: 2
-    m_Bits: 128
-  trajectoryStart: {fileID: 224029077330407165}
-  trajectoryLength: 10
   LaunchTimer: {fileID: 0}
   Rocket: {fileID: 1339342341936927965}
 --- !u!114 &6629605270127448952

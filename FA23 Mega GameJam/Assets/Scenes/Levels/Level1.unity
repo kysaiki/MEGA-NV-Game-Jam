@@ -147,6 +147,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1966190306182014455, guid: ee01547b0a3680749bb5f82e783bab04,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2548604288527420691, guid: ee01547b0a3680749bb5f82e783bab04,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -327,6 +332,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5093690603508898173, guid: ee01547b0a3680749bb5f82e783bab04,
+        type: 3}
+      propertyPath: showAimTutorial
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5529837625321988541, guid: ee01547b0a3680749bb5f82e783bab04,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -423,6 +433,12 @@ GameObject:
 --- !u!1 &59611533 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1748051174924646740, guid: 5e0a63646c2824ac5870643d77cb74e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 4742131090557015485}
+  m_PrefabAsset: {fileID: 0}
+--- !u!120 &84795967 stripped
+LineRenderer:
+  m_CorrespondingSourceObject: {fileID: 4493644205266161009, guid: 5e0a63646c2824ac5870643d77cb74e9,
     type: 3}
   m_PrefabInstance: {fileID: 4742131090557015485}
   m_PrefabAsset: {fileID: 0}
@@ -1684,7 +1700,13 @@ PrefabInstance:
       propertyPath: LaunchCamera
       value: 
       objectReference: {fileID: 307885224}
-    m_RemovedComponents: []
+    - target: {fileID: 7640322109322693870, guid: 5e0a63646c2824ac5870643d77cb74e9,
+        type: 3}
+      propertyPath: lineRenderer
+      value: 
+      objectReference: {fileID: 84795967}
+    m_RemovedComponents:
+    - {fileID: 7640322109322693870, guid: 5e0a63646c2824ac5870643d77cb74e9, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -30,17 +30,31 @@ public class RocketBehavior : MonoBehaviour
         {
             float rotationSpeed = 90.0f;
             
+
             if (Input.GetKey(KeyCode.Space) && FuelMeter.value > 0.0f && m_rb.velocity.magnitude < 100.0f)
             {
                 FuelMeter.value -= 0.0025f;
                 Debug.Log("BOOST");
+                AudioManager.instance.PlaySFX(AudioManager.SoundEffect.Engine);
                 m_Rigidbody.AddForce(transform.up * m_Thrust * 100.0f * Time.deltaTime, ForceMode.Impulse);
+                
             }
+
+            if (Input.GetKey(KeyCode.Space))
+            {
+                AudioManager.instance.PlaySFX(AudioManager.SoundEffect.Engine);
+            }
+            else
+            {
+                AudioManager.instance.StopEngineSound();
+            }
+            
         }
     }
 
     public void Launch()
     {
+        AudioManager.instance.CrossfadeToTrack(AudioManager.MusicState.InFlight);
         launched = true;
         for (int i = 0; i < 30; i++)
         {
@@ -52,6 +66,7 @@ public class RocketBehavior : MonoBehaviour
         if (other.gameObject.tag == "Obstacle")
         {
             failScreen.SetActive(true);
+            AudioManager.instance.PlaySFX(AudioManager.SoundEffect.Lose);
             Destroy(this.gameObject);
             Debug.Log("COLLIDED");
         }
