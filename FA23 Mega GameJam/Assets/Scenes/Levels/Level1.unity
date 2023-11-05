@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.029577656, g: 0.017715747, b: 0.01976219, a: 1}
+  m_IndirectSpecularColor: {r: 0.009205535, g: 0.008444901, b: 0.022741823, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -335,7 +335,7 @@ PrefabInstance:
     - target: {fileID: 5093690603508898173, guid: ee01547b0a3680749bb5f82e783bab04,
         type: 3}
       propertyPath: showAimTutorial
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5529837625321988541, guid: ee01547b0a3680749bb5f82e783bab04,
         type: 3}
@@ -1660,6 +1660,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Start Planet
       objectReference: {fileID: 0}
+    - target: {fileID: 2806337647123994668, guid: 5e0a63646c2824ac5870643d77cb74e9,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 2540817853737639666, guid: d644c10e444fd47c0ab52fe7da3de1f7,
+        type: 3}
     - target: {fileID: 5809087335705902591, guid: 5e0a63646c2824ac5870643d77cb74e9,
         type: 3}
       propertyPath: LaunchTimer
@@ -1670,6 +1676,12 @@ PrefabInstance:
       propertyPath: LaunchCamera
       value: 
       objectReference: {fileID: 307885224}
+    - target: {fileID: 6370878840045577556, guid: 5e0a63646c2824ac5870643d77cb74e9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -4612162990109294230, guid: d644c10e444fd47c0ab52fe7da3de1f7,
+        type: 3}
     - target: {fileID: 6629605270127448952, guid: 5e0a63646c2824ac5870643d77cb74e9,
         type: 3}
       propertyPath: LaunchTimer
