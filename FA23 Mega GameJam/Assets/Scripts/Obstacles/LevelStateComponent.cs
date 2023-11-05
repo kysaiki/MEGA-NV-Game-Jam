@@ -10,6 +10,8 @@ public class LevelStateComponent : MonoBehaviour
     [SerializeField] private float LevelTime;
     [SerializeField] private int currLevel;
     [SerializeField] private GameCameraControl CameraControl;
+
+    public GameObject FuelSlider;
     public GameObject failScreen;
     public GameObject winScreen;
 
@@ -22,6 +24,7 @@ public class LevelStateComponent : MonoBehaviour
     {
         RequiredCollectibles = GameManager.GetObjective(currLevel);
         AudioManager.instance.CrossfadeToTrack(AudioManager.MusicState.Aiming);
+        FuelSlider.gameObject.SetActive(true);
 
     }
 
@@ -30,6 +33,7 @@ public class LevelStateComponent : MonoBehaviour
         if (RocketIsOutOfBounds() || LevelTimeExceeded())
         {
             failScreen.SetActive(true);
+            FuelSlider.gameObject.SetActive(false);
             AudioManager.instance.PlaySFX(AudioManager.SoundEffect.Lose);
         }
     }
@@ -55,6 +59,7 @@ public class LevelStateComponent : MonoBehaviour
 
     public void FinishLevel()
     {
+        FuelSlider.gameObject.SetActive(false);
         if (!RocketIsOutOfBounds() && !LevelTimeExceeded() && AllCollectiblesCollected())
         {
             winScreen.SetActive(true);
@@ -62,6 +67,7 @@ public class LevelStateComponent : MonoBehaviour
             CameraControl.ActivateFinishCamera();
             Destroy(Rocket);
             completed = true;
+            
         }
     }
 

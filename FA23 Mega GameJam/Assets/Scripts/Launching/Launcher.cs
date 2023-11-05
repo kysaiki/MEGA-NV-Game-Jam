@@ -17,6 +17,8 @@ public class Launcher : MonoBehaviour
     [SerializeField] private RocketBehavior Rocket;
     private bool launched = false;
 
+    private bool lockTrajectory = false;
+
     void Update()
     {
         // if we are not in launching perspective, do nothing
@@ -28,12 +30,17 @@ public class Launcher : MonoBehaviour
         
         if (!launched)
         {
+            // Launch rocketship
+            if (Input.GetKeyDown(KeyCode.Space)) {
+                lockTrajectory = true;
+                LaunchTimer.ActivateTimer();
+            }
+        }
+
+        if (!lockTrajectory)
+        {
             FollowMouse();
             DrawTrajectory();
-
-            // Launch rocketship
-            if (Input.GetKeyDown(KeyCode.Space))
-                LaunchTimer.ActivateTimer();
         }
     }
 
