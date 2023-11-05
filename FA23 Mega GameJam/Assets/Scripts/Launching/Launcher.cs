@@ -17,6 +17,8 @@ public class Launcher : MonoBehaviour
     [SerializeField] private RocketBehavior Rocket;
     private bool launched = false;
 
+    bool CanAim = true;
+
     void Update()
     {
         // if we are not in launching perspective, do nothing
@@ -28,18 +30,24 @@ public class Launcher : MonoBehaviour
         
         if (!launched)
         {
-            FollowMouse();
-            DrawTrajectory();
+            if (CanAim)
+            {
+                FollowMouse();
+                DrawTrajectory();
+            }
+            
 
             // Launch rocketship
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space)) {
                 LaunchTimer.ActivateTimer();
+                CanAim = false;
+            }
         }
     }
 
     private void FollowMouse()
     {
-        
+
         Plane groundPlane = new Plane(Vector3.up, 0f);
         Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         float hitDist = 0f;
