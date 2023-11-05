@@ -11,6 +11,7 @@ public class GameCameraControl : MonoBehaviour
     [SerializeField] private float MinCameraHeight = 5.0f;
 
     [SerializeField] private Transform CameraStart;
+    [SerializeField] private Transform CameraFinish;
     [SerializeField] private  GameObject CurrentLaunchPlanet;
     [SerializeField] private Transform CameraRocketPosition;
 
@@ -28,7 +29,8 @@ public class GameCameraControl : MonoBehaviour
     void Update()
     {
         if (mode == 0) ProcessAimInput();
-        else ProcessLaunchInput();
+        else if (mode == 1) ProcessLaunchInput();
+        else ActivateFinishCamera();
     }
 
     void ProcessAimInput()
@@ -54,6 +56,12 @@ public class GameCameraControl : MonoBehaviour
         bool canMoveCameraUp = (Camera.main.transform.position.y + zoom) < MaxCameraHeight;
         bool canMoveCameraDown = (Camera.main.transform.position.y + zoom) > MinCameraHeight;
         if (canMoveCameraUp && canMoveCameraDown) Camera.main.transform.Translate(0.0f, zoom, 0.0f, Space.World);
+    }
+
+    public void ActivateFinishCamera()
+    {
+        mode = 2;
+        transform.position = CameraFinish.position;
     }
 
     public void ActivateLaunchCamera()

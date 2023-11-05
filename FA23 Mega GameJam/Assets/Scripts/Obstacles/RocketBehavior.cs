@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RocketBehavior : MonoBehaviour
 {
@@ -9,10 +10,16 @@ public class RocketBehavior : MonoBehaviour
     public float m_Speed = 10.0f;
     bool launched = false;
 
+    Rigidbody m_rb;
+
+    public Slider FuelMeter;
+
     // Start is called before the first frame update
     void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
+
+        m_rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -21,7 +28,13 @@ public class RocketBehavior : MonoBehaviour
         if (launched)
         {
             float rotationSpeed = 90.0f;
-            m_Rigidbody.AddForce(transform.up * m_Thrust);
+            
+            if (Input.GetKey(KeyCode.Space) && FuelMeter.value > 0.0f && m_rb.velocity.magnitude < 100.0f)
+            {
+                FuelMeter.value -= 0.0025f;
+                Debug.Log("BOOST");
+                m_Rigidbody.AddForce(transform.up * m_Thrust * 100.0f * Time.deltaTime, ForceMode.Impulse);
+            }
         }
     }
 
