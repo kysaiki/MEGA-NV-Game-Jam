@@ -83,7 +83,7 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        //set sfx volume
+        //initialize sfx source
         sfxSource.volume = sfxVolume * masterVol;
         //initialize music tracks
         aimingMusicSource.clip = aimingMusicClip;
