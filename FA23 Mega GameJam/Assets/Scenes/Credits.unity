@@ -258,8 +258,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Art: Delin (Angelina) Liang, Elaine Toh\n\nAudio/Music: Theodore Strich\n\nDesign:
-    David Han, Kyler Saiki\n\nProgramming: Isabel Guan, Emma Leihe\n            
-    Angelina Liang, Kyler Saiki\n             Theodore Strich, Elaine Toh"
+    David Han, Angelina Liang\n        Kyler Saiki\n\nProgramming: Isabel Guan, Emma
+    Leihe\n             Kyler Saiki, Theodore Strich\n             Elaine Toh"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -431,7 +431,7 @@ RectTransform:
   m_GameObject: {fileID: 1277269444}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 7.3253, y: 3.3384001, z: 1}
+  m_LocalScale: {x: 7.3253, y: 3.4632564, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1801952605}
@@ -439,7 +439,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -11}
+  m_AnchoredPosition: {x: -11, y: -27}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1277269446
