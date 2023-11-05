@@ -5,6 +5,10 @@ using System.Collections;
 
 public class MainMenu : MonoBehaviour
 {
+    public void Start()
+    {
+        SceneManage.GetCurrScene();
+    }
     public void StartGame()
     {
         SceneManage.LoadNextScene();
