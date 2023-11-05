@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 7165346143696345872}
   - component: {fileID: 6080506023443213723}
   - component: {fileID: 1367763570254239550}
+  - component: {fileID: 2533301259530944806}
+  - component: {fileID: 6959935033854623290}
   m_Layer: 0
   m_Name: Target Planet
   m_TagString: Untagged
@@ -32,6 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 110394716419133935}
+  - {fileID: 9162359292069076555}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -106,6 +109,36 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2533301259530944806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2195879843594661492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16fd24c4ee01b4b8e953f0b6599e0ca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LevelState: {fileID: 6959935033854623290}
+--- !u!114 &6959935033854623290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2195879843594661492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebb144ba1af3c472eb00f9ec7b3af07a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LevelMinTransform: {fileID: 0}
+  LevelMaxTransform: {fileID: 0}
+  Rocket: {fileID: 0}
+  LevelTime: 15
+  CameraControl: {fileID: 0}
 --- !u!1 &5247847594378311345
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,4 +205,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6d0df6689d814c1394b292d342dec5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Gravity: 10
+  Gravity: 8
+--- !u!1 &6573014334151331462
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9162359292069076555}
+  m_Layer: 0
+  m_Name: Camera Finish
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9162359292069076555
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6573014334151331462}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.52, z: -3.81}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9127863788373120344}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

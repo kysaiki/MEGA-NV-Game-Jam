@@ -6,10 +6,15 @@ public class Launcher : MonoBehaviour
 {
     [SerializeField] private float rotationSpeed = 1000.0f;
     [SerializeField] private Camera launcherCam;
+
+    [SerializeField] private GameCameraControl LaunchCamera; 
     [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private LayerMask targetLayers;
     [SerializeField] private Transform trajectoryStart;
     [SerializeField] private float trajectoryLength = 50f;
+    [SerializeField] private LaunchTimerComponent LaunchTimer;
+
+    [SerializeField] private RocketBehavior Rocket;
     private bool launched = false;
 
     void Update()
@@ -28,7 +33,7 @@ public class Launcher : MonoBehaviour
 
             // Launch rocketship
             if (Input.GetKeyDown(KeyCode.Space))
-                Launch();
+                LaunchTimer.ActivateTimer();
         }
     }
 
@@ -72,14 +77,17 @@ public class Launcher : MonoBehaviour
 
     public void Launch()
     {
+        // AudioManager.instance.PlaySFX(AudioManager.SoundEffect.Launch);
         Debug.Log("Launch!");
         launched = true;
         // disable line
         lineRenderer.positionCount = 0;
         // switch cameras?
         // launch rocket
-        RocketBehavior rocket = GetComponent<RocketBehavior>();
-        if (rocket != null)
-            rocket.Launch();
+        // RocketBehavior rocket = GetComponent<RocketBehavior>();
+
+        transform.DetachChildren();
+        LaunchCamera.ActivateLaunchCamera();
+        Rocket.Launch();
     }
 }

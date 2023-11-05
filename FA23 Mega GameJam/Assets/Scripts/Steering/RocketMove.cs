@@ -16,6 +16,8 @@ public class RocketMove : MonoBehaviour
     Rigidbody m_rb;
     Vector2 m_cursorPos;
 
+    public bool Launched = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,21 +28,26 @@ public class RocketMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        m_cursorPos = CursorPosition();
-        YawRoll();
-
+        if (Launched)
+        {
+            m_cursorPos = CursorPosition();
+            YawRoll();
+        }
     }
 
     private void FixedUpdate()
     {
-        m_roll = Input.GetAxisRaw("Horizontal");
-        m_pitch = m_cursorPos.y;
-        m_yaw = m_cursorPos.x;
-        float throttle = Input.GetAxisRaw("Vertical");
+        if (Launched)
+        {
+            m_roll = Input.GetAxisRaw("Horizontal");
+            m_pitch = m_cursorPos.y;
+            m_yaw = m_cursorPos.x;
+            float throttle = Input.GetAxisRaw("Vertical");
 
-        m_rb.AddRelativeTorque(Vector3.back * m_torque * m_roll);
-        m_rb.AddRelativeTorque(Vector3.left * m_torque * m_pitch);
-        m_rb.AddRelativeTorque(Vector3.up * m_torque * m_yaw);
+            m_rb.AddRelativeTorque(Vector3.back * m_torque * m_roll);
+            m_rb.AddRelativeTorque(Vector3.left * m_torque * m_pitch);
+            m_rb.AddRelativeTorque(Vector3.up * m_torque * m_yaw);
+        }
 
     }
 

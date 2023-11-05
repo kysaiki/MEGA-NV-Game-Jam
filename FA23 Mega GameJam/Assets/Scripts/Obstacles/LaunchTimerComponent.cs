@@ -7,7 +7,7 @@ public class LaunchTimerComponent : MonoBehaviour
 {
     [SerializeField] private float CountdownTime;
     [SerializeField] private TMP_Text CountdownText;
-    [SerializeField] private StartPlanetComponent LaunchPlanet;
+    [SerializeField] private Launcher LaunchPlanet;
 
     bool activateTimer = false;
     float timer = 3.0f;
@@ -23,7 +23,7 @@ public class LaunchTimerComponent : MonoBehaviour
             {
                 UpdateText("LAUNCH");
                 LaunchPlanet.Launch();
-                Destroy(gameObject);
+                Destroy(this.gameObject);
             }
         }
     }
