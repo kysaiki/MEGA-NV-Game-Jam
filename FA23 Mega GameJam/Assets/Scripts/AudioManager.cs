@@ -20,7 +20,7 @@ public class AudioManager : MonoBehaviour
     public enum SoundEffect
     {
         Aim,
-        Steer,
+        Engine,
         Launch,
         Collect,
         Win,
@@ -154,7 +154,7 @@ public class AudioManager : MonoBehaviour
             case SoundEffect.Aim:
                 sfxSource.PlayOneShot(aimSfxClip);
                 break;
-            case SoundEffect.Steer:
+            case SoundEffect.Engine:
                 sfxSource.PlayOneShot(engineSfxClip);
                 break;
             case SoundEffect.Launch:
