@@ -257,7 +257,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Art: Angelina Liang, Elaine Toh\n\nAudio/Music: Theodore Strich\n\nDesign:
+  m_text: "Art: Delin (Angelina) Liang, Elaine Toh\n\nAudio/Music: Theodore Strich\n\nDesign:
     David Han, Kyler Saiki\n\nProgramming: Isabel Guan, Emma Leihe\n            
     Angelina Liang, Kyler Saiki\n             Theodore Strich, Elaine Toh"
   m_isRightToLeft: 0

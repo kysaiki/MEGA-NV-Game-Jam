@@ -33,7 +33,7 @@ public static class GameManager
         SceneManage.LoadNextScene();
     }
 
-    public static void GetObjective(int lvl)
+    public static int GetObjective(int lvl)
     {
         switch (lvl)
         {
@@ -64,5 +64,7 @@ public static class GameManager
             default:
                 break;
         }
+
+        return s_currGoal;
     }
 }
