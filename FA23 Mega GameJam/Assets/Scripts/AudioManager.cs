@@ -99,8 +99,8 @@ public class AudioManager : MonoBehaviour
         menuMusicSource.clip = menuMusicClip;
         aimingMusicSource.volume = 0;
         inFlightMusicSource.volume = 0;
-        menuMusicSource.volume = 0;
-        currentMusicState = MusicState.None;
+        menuMusicSource.volume = musicVolume * masterVol;
+        currentMusicState = MusicState.Menu;
         aimingMusicSource.loop = true;
         inFlightMusicSource.loop = true;
         menuMusicSource.loop = true;
