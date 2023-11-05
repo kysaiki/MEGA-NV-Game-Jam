@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2980580220954586957
 MonoBehaviour:
@@ -55,16 +55,17 @@ MonoBehaviour:
   aimingMusicSource: {fileID: 4821174904008797027}
   inFlightMusicSource: {fileID: 6007848002960838963}
   sfxSource: {fileID: 7887334458138433983}
-  menuMusicClip: {fileID: 0}
-  aimingMusicClip: {fileID: 0}
-  inFlightMusicClip: {fileID: 0}
+  menuMusicClip: {fileID: 8300000, guid: a0d8ab6dea795406dade3826cc478ed1, type: 3}
+  aimingMusicClip: {fileID: 8300000, guid: d5864847ecb1e41d88b1d63203afb137, type: 3}
+  inFlightMusicClip: {fileID: 8300000, guid: 9e10f2d5e150944fb8adfb2038e795ce, type: 3}
   aimSfxClip: {fileID: 0}
-  engineSfxClip: {fileID: 0}
-  launchSfxClip: {fileID: 0}
-  collectSfxClip: {fileID: 0}
-  winSfxClip: {fileID: 0}
-  loseSfxClip: {fileID: 0}
-  menuButtonSfxClip: {fileID: 0}
+  engineSfxClip: {fileID: 8300000, guid: ad025a078da2e498c81b9b0621cab5ab, type: 3}
+  launchSfxClip: {fileID: 8300000, guid: f635ac635d4624ffdbac47ef08e8c5b7, type: 3}
+  collectSfxClip: {fileID: 8300000, guid: c4e09c4097dd64a75b33fc786c7618fe, type: 3}
+  winSfxClip: {fileID: 8300000, guid: 3ed65eee9227243f085029a51028183a, type: 3}
+  loseSfxClip: {fileID: 8300000, guid: 57012859bda014a3c97f4f5cc1397b13, type: 3}
+  menuButtonSfxClip: {fileID: 8300000, guid: f5afa8924b0c94b7dbf495d17f176ed3, type: 3}
+  currentMusicState: 0
 --- !u!82 &8038479069036411039
 AudioSource:
   m_ObjectHideFlags: 0

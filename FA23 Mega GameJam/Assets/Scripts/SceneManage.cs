@@ -6,7 +6,12 @@ using UnityEngine.SceneManagement;
 public static class SceneManage
 {
     public static int s_currSceneIdx;
-    public static int s_lastSceneIdx;
+    public static int s_lastSceneIdx = 10;
+
+    public static void GetCurrScene()
+    {
+        s_currSceneIdx = SceneManager.GetActiveScene().buildIndex;
+    }
 
     public static void Load(string name)
     {
