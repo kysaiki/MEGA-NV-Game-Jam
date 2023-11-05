@@ -178,24 +178,25 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        //testing stuff
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            CrossfadeToTrack(MusicState.Menu);
-        }
-        else if (Input.GetKeyDown(KeyCode.N))
-        {
-            CrossfadeToTrack(MusicState.None);
-        }
-        else if (Input.GetKeyDown(KeyCode.B))
-        {
-            CrossfadeToTrack(MusicState.Aiming);
-        }
-        else if (Input.GetKeyDown(KeyCode.V))
-        {
-            CrossfadeToTrack(MusicState.InFlight);
-        }
-    }
+    // for testing only!!!!!!!!
+    //private void Update()
+    //{
+    //    //testing stuff
+    //    if (Input.GetKeyDown(KeyCode.M))
+    //    {
+    //        CrossfadeToTrack(MusicState.Menu);
+    //    }
+    //    else if (Input.GetKeyDown(KeyCode.N))
+    //    {
+    //        CrossfadeToTrack(MusicState.None);
+    //    }
+    //    else if (Input.GetKeyDown(KeyCode.B))
+    //    {
+    //        CrossfadeToTrack(MusicState.Aiming);
+    //    }
+    //    else if (Input.GetKeyDown(KeyCode.V))
+    //    {
+    //        CrossfadeToTrack(MusicState.InFlight);
+    //    }
+    //}
 }
