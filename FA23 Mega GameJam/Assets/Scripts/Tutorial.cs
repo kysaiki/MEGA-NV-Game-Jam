@@ -1,107 +1,76 @@
-/*using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Tutorial : MonoBehaviour
 {
-    [SerializeField] private GameObject mouse;
-    [SerializeField] private GameObject spaceBar;
+    [SerializeField] private Animator mouseAnim;
+    [SerializeField] private Animator spaceBarAnim;
+    [SerializeField] private Animator arrowAnim;
+    [SerializeField] private Image mouse;
+    [SerializeField] private Image spaceBar;
+    [SerializeField] private Image arrows;
     [SerializeField] private bool showAimTutorial; 
     [SerializeField] private bool showLaunchTutorial;
+    [SerializeField] private bool showSteerTutorial;
 
     private void Start()
     {
-        showAimTutorial = true;
     }
 
     private void Update()
     {
         if (showAimTutorial)
-        {            
-        }
-        if (showLaunchTutorial)
         {
-            StartCoroutine(ShowLaunch());
+            mouseAnim.Play("MouseAnim");
+            showAimTutorial = false;
+        }
+        else if (showLaunchTutorial)
+        {
+            spaceBarAnim.Play("FadeIn");
+            showLaunchTutorial = false;
+        }
+        else if (showSteerTutorial)
+        {
+            arrowAnim.Play("FadeIn");
+            showSteerTutorial = false;
+        }
+
+        if(Input.GetKeyDown(KeyCode.Space) && spaceBar.enabled)
+        {
+            spaceBarAnim.Play("FadeOut");
+        }
+        if (Input.GetAxis("Horizontal") > 0 && arrows.enabled && !arrowAnim.GetCurrentAnimatorStateInfo(0).IsName("FadeOut"))
+        {
+            arrowAnim.Play("FadeOut");
         }
     }
 
     private IEnumerator ShowLaunch()
     {
-        juvenileFishText.SetActive(true);
-        juvenileFishText.GetComponent<Animator>().SetBool("visible", true);
 
         yield return new WaitForSeconds(3); ;
 
-        juvenileFishText.GetComponent<Animator>().SetBool("visible", false);
     }
 
-    public void RevealCatHorizontalControls()
+    private IEnumerator ShowArrows()
     {
-        catHorizontalArrows.SetActive(true);
-        catHorizontalArrows.GetComponent<Animator>().SetBool("visible", true);
+        yield return new WaitForSeconds(3); ;
     }
 
-    public void RevealCatVerticalControls()
+    public void SetAimTutorial()
     {
-        catVerticalArrows.SetActive(true);
-        catVerticalArrows.GetComponent<Animator>().SetBool("visible", true);
+        showAimTutorial = true;
     }
 
-    public void RevealSpotlightSpaceControl()
+    public void SetLaunchTutorial()
     {
-        spotlightSpace.SetActive(true);
-        spotlightSpace.GetComponent<Animator>().SetBool("visible", true);
+        showLaunchTutorial = true;
     }
 
-    public void RevealSpotlightMoveControls()
+    public void SetSteerTutorial()
     {
-        spotlightMoveArrows.SetActive(true);
-        spotlightMoveArrows.GetComponent<Animator>().SetBool("visible", true);
+        showSteerTutorial = true;
     }
-
-    public void RevealBoatSpaceControl()
-    {
-        boatSpace.SetActive(true);
-        boatSpace.GetComponent<Animator>().SetBool("visible", true);
-    }
-
-    public void HideBoatSpaceControl()
-    {
-        if (boatSpace.activeSelf)
-        {
-            boatSpace.GetComponent<Animator>().SetBool("visible", false);
-        }
-    }
-
-    public void HideCatHorizontalControls()
-    {
-        if (catHorizontalArrows.activeSelf)
-        {
-            catHorizontalArrows.GetComponent<Animator>().SetBool("visible", false);
-        }
-    }
-
-    public void HideCatVerticalControls()
-    {
-        if (catVerticalArrows.activeSelf)
-        {
-            catVerticalArrows.GetComponent<Animator>().SetBool("visible", false);
-        }
-    }
-
-    public void HideSpotlightSpaceControl()
-    {
-        if (spotlightSpace.activeSelf)
-        {
-            spotlightSpace.GetComponent<Animator>().SetBool("visible", false);
-        }
-    }
-
-    public void HideSpotlightMoveControls()
-    {
-        if (spotlightMoveArrows.activeSelf)
-        {
-            spotlightMoveArrows.GetComponent<Animator>().SetBool("visible", false);
-        }
-    }
-}*/
+}
