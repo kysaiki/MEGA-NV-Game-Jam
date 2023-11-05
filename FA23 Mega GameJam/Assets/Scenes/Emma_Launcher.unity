@@ -1921,6 +1921,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RocketLauncher
       objectReference: {fileID: 0}
+    - target: {fileID: 7510024407372741132, guid: 8139572bdb1074d3d8febfc6de9c1d12,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8001372692562240101, guid: 8139572bdb1074d3d8febfc6de9c1d12,
         type: 3}
       propertyPath: m_RootOrder

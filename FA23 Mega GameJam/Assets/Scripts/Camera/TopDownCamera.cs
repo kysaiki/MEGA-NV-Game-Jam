@@ -40,7 +40,7 @@ public class TopDownCamera : MonoBehaviour
         ResetCamera();
     }
 
-    void FixedUpdate()
+    void Update()
     {
         ProcessInput();
     }
