@@ -11,7 +11,7 @@ public static class GameManager
     public static int s_currLevel = 0;
     public static int s_currGoal = -1;
 
-    public static void EndLevel()
+/*    public static void EndLevel()
     {
         if (s_fail)
         {
@@ -21,21 +21,21 @@ public static class GameManager
         {
             WinLevel();
         }
-    }
+    }*/
 
-    private static void FailLevel()
+    public static void FailLevel()
     {
         SceneManage.Reload();
     }
 
-    private static void WinLevel()
+    public static void WinLevel()
     {
         SceneManage.LoadNextScene();
     }
 
-    private static void GetObjective()
+    public static void GetObjective(int lvl)
     {
-        switch (s_currLevel)
+        switch (lvl)
         {
             case 1:
                 s_currGoal = 0;
