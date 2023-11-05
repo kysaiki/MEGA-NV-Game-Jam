@@ -39,8 +39,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource menuMusicSource;
     [SerializeField] private AudioSource aimingMusicSource;
     [SerializeField] private AudioSource inFlightMusicSource;
-    //sfx audio source
+    //sfx audio sources
     [SerializeField] private AudioSource sfxSource;
+    [SerializeField] private AudioSource engineSFXSource;
     //music files
     [SerializeField] private AudioClip menuMusicClip;
     [SerializeField] private AudioClip aimingMusicClip;
@@ -86,16 +87,20 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        //initialize sfx source
+        //initialize sfx sources
         sfxSource.volume = sfxVolume * masterVol;
+        engineSFXSource.volume = 0;
+        engineSFXSource.clip = engineSfxClip;
+        engineSFXSource.loop = true;
+        engineSFXSource.Play();
         //initialize music tracks
         aimingMusicSource.clip = aimingMusicClip;
         inFlightMusicSource.clip = inFlightMusicClip;
         menuMusicSource.clip = menuMusicClip;
         aimingMusicSource.volume = 0;
         inFlightMusicSource.volume = 0;
-        menuMusicSource.volume = 0;
-        currentMusicState = MusicState.None;
+        menuMusicSource.volume = musicVolume * masterVol;
+        currentMusicState = MusicState.Menu;
         aimingMusicSource.loop = true;
         inFlightMusicSource.loop = true;
         menuMusicSource.loop = true;
@@ -155,7 +160,7 @@ public class AudioManager : MonoBehaviour
                 sfxSource.PlayOneShot(aimSfxClip);
                 break;
             case SoundEffect.Engine:
-                sfxSource.PlayOneShot(engineSfxClip);
+                engineSFXSource.volume = sfxVolume * masterVol;
                 break;
             case SoundEffect.Launch:
                 sfxSource.PlayOneShot(launchSfxClip);
@@ -176,6 +181,12 @@ public class AudioManager : MonoBehaviour
                 Debug.Log("Missing SFX Audio Clip");
                 break;
         }
+    }
+
+    //stop engine sounds
+    public void StopEngineSound()
+    {
+        engineSFXSource.volume = 0;
     }
 
     //make sure volumes are always between zero and one
