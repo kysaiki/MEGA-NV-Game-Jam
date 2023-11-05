@@ -33,13 +33,13 @@ public class RocketMove : MonoBehaviour
 
     private void FixedUpdate()
     {
-        m_roll = -1 * Input.GetAxisRaw("Horizontal");
+        m_roll = Input.GetAxisRaw("Horizontal");
         m_pitch = m_cursorPos.y;
         m_yaw = m_cursorPos.x;
-        float throttle = -1 * Input.GetAxisRaw("Vertical");
+        float throttle = Input.GetAxisRaw("Vertical");
 
         m_rb.AddRelativeTorque(Vector3.back * m_torque * m_roll);
-        m_rb.AddRelativeTorque(Vector3.right * m_torque * m_pitch);
+        m_rb.AddRelativeTorque(Vector3.left * m_torque * m_pitch);
         m_rb.AddRelativeTorque(Vector3.up * m_torque * m_yaw);
 
     }
@@ -50,8 +50,8 @@ public class RocketMove : MonoBehaviour
         cursorPosition.x -= Screen.width / 2;
         cursorPosition.y -= Screen.height / 2;
 
-        //float cursorX = cursorPosition.x / (Screen.width / 2f);
-        //float cursorY = cursorPosition.y / (Screen.height / 2f);
+        float cursorX = cursorPosition.x / (Screen.width / 2f);
+        float cursorY = cursorPosition.y / (Screen.height / 2f);
 
         return new Vector2(cursorPosition.x, cursorPosition.y);
     }
@@ -70,7 +70,7 @@ public class RocketMove : MonoBehaviour
 
     private void YawRoll()
     {
-        Vector3 targetRollValue = new Vector3(0, 180, Mathf.Clamp(-CursorAngle().z, -60, 60));
+        Vector3 targetRollValue = new Vector3(0, 180, Mathf.Clamp(-CursorAngle().z, -45.0f, 45.0f));
 
         m_modelObject.transform.localRotation = Quaternion.Euler(targetRollValue);
     }
