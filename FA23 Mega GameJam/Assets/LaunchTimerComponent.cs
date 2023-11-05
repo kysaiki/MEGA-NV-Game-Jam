@@ -18,7 +18,7 @@ public class LaunchTimerComponent : MonoBehaviour
         if (activateTimer)
         {
             timer -= Time.deltaTime;
-            UpdateText("T - " + timer.ToString());
+            UpdateText("T - " + ((int)timer + 1).ToString());
             if (timer <= 0.0f)
             {
                 UpdateText("LAUNCH");

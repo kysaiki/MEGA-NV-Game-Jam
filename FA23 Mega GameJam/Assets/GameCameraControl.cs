@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraMovement : MonoBehaviour
+public class GameCameraControl : MonoBehaviour
 {
     [SerializeField] private float PanSpeed = 0.05f;
     [SerializeField] private float ZoomSpeed = 2.0f;
@@ -71,4 +71,5 @@ public class CameraMovement : MonoBehaviour
     {
         transform.position = CameraStart.position;
     }
+
 }

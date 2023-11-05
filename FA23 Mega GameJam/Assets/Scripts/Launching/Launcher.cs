@@ -49,7 +49,7 @@ public class Launcher : MonoBehaviour
 
     private void DrawTrajectory()
     {
-        lineRenderer.
+        // lineRenderer.
     }
 
     public void Launch()
