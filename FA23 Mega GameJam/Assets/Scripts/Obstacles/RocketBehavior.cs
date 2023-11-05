@@ -9,6 +9,7 @@ public class RocketBehavior : MonoBehaviour
     public float m_Thrust = 0.01f;
     public float m_Speed = 10.0f;
     bool launched = false;
+    public GameObject failScreen;
 
     Rigidbody m_rb;
 
@@ -50,6 +51,7 @@ public class RocketBehavior : MonoBehaviour
     private void OnCollisionEnter(Collision other) {
         if (other.gameObject.tag == "Obstacle")
         {
+            failScreen.SetActive(true);
             Destroy(this.gameObject);
             Debug.Log("COLLIDED");
         }
