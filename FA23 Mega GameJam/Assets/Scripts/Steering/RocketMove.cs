@@ -21,10 +21,10 @@ public class RocketMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        m_roll = Input.GetAxisRaw("Horizontal");
-        m_pitch = Input.GetAxisRaw("Vertical");
+        m_roll = -1* Input.GetAxisRaw("Horizontal");
+        m_pitch = -1 * Input.GetAxisRaw("Vertical");
 
-        transform.Rotate(Vector3.back * m_roll * m_rollSpeed * Time.deltaTime, Space.Self);
+        transform.Rotate(Vector3.forward * m_roll * m_rollSpeed * Time.deltaTime, Space.Self);
         transform.Rotate(Vector3.right * m_pitch * m_pitchSpeed * Time.deltaTime, Space.Self);
 
         if(Input.GetKey(KeyCode.Space))
