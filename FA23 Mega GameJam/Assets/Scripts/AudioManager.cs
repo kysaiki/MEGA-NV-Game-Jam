@@ -6,7 +6,7 @@ public class AudioManager : MonoBehaviour
     
     
     //how long crossfades take, in seconds
-    static readonly float FADE_TIME = 2f;
+    public static readonly float FADE_TIME = 2f;
     
     //enum for current music track
     public enum MusicState
@@ -176,6 +176,14 @@ public class AudioManager : MonoBehaviour
                 Debug.Log("Missing SFX Audio Clip");
                 break;
         }
+    }
+
+    //make sure volumes are always between zero and one
+    private void Update()
+    {
+        masterVol = Mathf.Clamp(masterVol, 0, 1);
+        musicVolume = Mathf.Clamp(musicVolume, 0, 1);
+        sfxVolume = Mathf.Clamp(sfxVolume, 0, 1);
     }
 
     // for testing only!!!!!!!!
