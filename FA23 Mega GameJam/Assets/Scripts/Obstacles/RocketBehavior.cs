@@ -46,4 +46,12 @@ public class RocketBehavior : MonoBehaviour
             m_Rigidbody.AddForce(transform.up * m_Thrust, ForceMode.Impulse);
         }
     }
+
+    private void OnCollisionEnter(Collision other) {
+        if (other.gameObject.tag == "Obstacle")
+        {
+            Destroy(this.gameObject);
+            Debug.Log("COLLIDED");
+        }
+    }
 }
