@@ -21,6 +21,8 @@ public class LevelStateComponent : MonoBehaviour
     private void Start()
     {
         RequiredCollectibles = GameManager.GetObjective(currLevel);
+        AudioManager.instance.CrossfadeToTrack(AudioManager.MusicState.Aiming);
+
     }
 
     void Update()
@@ -28,6 +30,7 @@ public class LevelStateComponent : MonoBehaviour
         if (RocketIsOutOfBounds() || LevelTimeExceeded())
         {
             failScreen.SetActive(true);
+            AudioManager.instance.PlaySFX(AudioManager.SoundEffect.Lose);
         }
     }
 
@@ -55,6 +58,7 @@ public class LevelStateComponent : MonoBehaviour
         if (!RocketIsOutOfBounds() && !LevelTimeExceeded() && AllCollectiblesCollected())
         {
             winScreen.SetActive(true);
+            AudioManager.instance.PlaySFX(AudioManager.SoundEffect.Win);
             CameraControl.ActivateFinishCamera();
             Destroy(Rocket);
             completed = true;

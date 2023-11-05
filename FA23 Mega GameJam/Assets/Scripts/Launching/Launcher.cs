@@ -39,6 +39,7 @@ public class Launcher : MonoBehaviour
 
     private void FollowMouse()
     {
+        
         Plane groundPlane = new Plane(Vector3.up, 0f);
         Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         float hitDist = 0f;
@@ -77,7 +78,6 @@ public class Launcher : MonoBehaviour
 
     public void Launch()
     {
-        // AudioManager.instance.PlaySFX(AudioManager.SoundEffect.Launch);
         Debug.Log("Launch!");
         launched = true;
         // disable line
@@ -85,7 +85,7 @@ public class Launcher : MonoBehaviour
         // switch cameras?
         // launch rocket
         // RocketBehavior rocket = GetComponent<RocketBehavior>();
-
+        AudioManager.instance.PlaySFX(AudioManager.SoundEffect.Launch);
         transform.DetachChildren();
         LaunchCamera.ActivateLaunchCamera();
         Rocket.Launch();
