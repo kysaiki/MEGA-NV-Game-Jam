@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    
+    
     //how long crossfades take, in seconds
     static readonly float FADE_TIME = 2f;
     
@@ -53,7 +55,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip menuButtonSfxClip;
 
     //audio management stuff
-    private MusicState currentMusicState;
+    [SerializeField] private MusicState currentMusicState;
     //get the relevant AudioSource component being used to play music
     public AudioSource GetMusicSource(MusicState state)
     {
@@ -70,13 +72,14 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    //singleton stuff
+    //singleton stuff and sound initialization
     void Awake()
     {
         //singleton
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else if (instance != this)
         {
@@ -104,8 +107,8 @@ public class AudioManager : MonoBehaviour
     //fades to the selected music track. you can crossfade to MusicState.None for a fadeout
     public void CrossfadeToTrack(MusicState newState)
     {
-        StartCoroutine(FadeIn(newState));
         StartCoroutine(FadeOut(currentMusicState));
+        StartCoroutine(FadeIn(newState));
     }
     //coroutines for crossfade
     private IEnumerator FadeIn(MusicState state)
@@ -120,8 +123,9 @@ public class AudioManager : MonoBehaviour
                 source.volume += fadeAmount * Time.deltaTime;
                 yield return null;
             }
-            source.volume = 0;
+            source.volume = targetVolume;
         }
+        currentMusicState = state;
     }
     private IEnumerator FadeOut(MusicState state)
     {
@@ -171,6 +175,27 @@ public class AudioManager : MonoBehaviour
             default:
                 Debug.Log("Missing SFX Audio Clip");
                 break;
+        }
+    }
+
+    private void Update()
+    {
+        //testing stuff
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            CrossfadeToTrack(MusicState.Menu);
+        }
+        else if (Input.GetKeyDown(KeyCode.N))
+        {
+            CrossfadeToTrack(MusicState.None);
+        }
+        else if (Input.GetKeyDown(KeyCode.B))
+        {
+            CrossfadeToTrack(MusicState.Aiming);
+        }
+        else if (Input.GetKeyDown(KeyCode.V))
+        {
+            CrossfadeToTrack(MusicState.InFlight);
         }
     }
 }
