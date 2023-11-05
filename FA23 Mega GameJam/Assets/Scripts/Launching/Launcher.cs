@@ -7,18 +7,29 @@ public class Launcher : MonoBehaviour
     [SerializeField] private float rotationSpeed = 1000.0f;
     [SerializeField] private Camera launcherCam;
     [SerializeField] private LineRenderer lineRenderer;
-    [SerializeField] private float trajectoryLength = 5f;
+    [SerializeField] private LayerMask targetLayers;
+    [SerializeField] private Transform trajectoryStart;
+    [SerializeField] private float trajectoryLength = 50f;
+    private bool launched = false;
 
     void Update()
     {
         // if we are not in launching perspective, do nothing
         if (!launcherCam.isActiveAndEnabled)
+        {
+            launched = false; // but reset this
             return;
-        FollowMouse();
-        DrawTrajectory();
+        }
+        
+        if (!launched)
+        {
+            FollowMouse();
+            DrawTrajectory();
 
-        if (Input.GetKeyDown(KeyCode.Space))
-            Launch();
+            // Launch rocketship
+            if (Input.GetKeyDown(KeyCode.Space))
+                Launch();
+        }
     }
 
     private void FollowMouse()
@@ -36,24 +47,39 @@ public class Launcher : MonoBehaviour
             if (toMouse.sqrMagnitude > float.Epsilon)
             {
                 toMouse.Normalize();
-                if (toMouse.sqrMagnitude > float.Epsilon)
-                {
-                    Quaternion goal = Quaternion.AngleAxis(Mathf.Atan2(toMouse.x, toMouse.z) * Mathf.Rad2Deg, Vector3.up);
-                    transform.rotation = Quaternion.RotateTowards(transform.rotation, goal, rotationSpeed * Time.deltaTime);
-                }
+                Quaternion goal = Quaternion.AngleAxis(Mathf.Atan2(toMouse.x, toMouse.z) * Mathf.Rad2Deg, Vector3.up);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, goal, rotationSpeed * Time.deltaTime);
             }
         }
         
-        Debug.DrawLine(transform.position, mousePos, Color.green, 5f);
+        // Debug.DrawLine(transform.position, mousePos, Color.green, 5f);
     }
 
     private void DrawTrajectory()
     {
-        // lineRenderer.
+        lineRenderer.positionCount = 2;
+        lineRenderer.SetPosition(0, trajectoryStart.position);
+        RaycastHit hitInfo;
+        if (Physics.Raycast(transform.position, transform.forward, out hitInfo, trajectoryLength, targetLayers))
+        {
+            lineRenderer.SetPosition(1, hitInfo.point);
+        }
+        else 
+        {
+            lineRenderer.SetPosition(1, trajectoryStart.position + transform.forward * trajectoryLength);
+        }
     }
 
     public void Launch()
     {
         Debug.Log("Launch!");
+        launched = true;
+        // disable line
+        lineRenderer.positionCount = 0;
+        // switch cameras?
+        // launch rocket
+        RocketBehavior rocket = GetComponent<RocketBehavior>();
+        if (rocket != null)
+            rocket.Launch();
     }
 }

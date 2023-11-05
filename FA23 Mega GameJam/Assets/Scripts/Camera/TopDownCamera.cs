@@ -31,12 +31,16 @@ public class TopDownCamera : MonoBehaviour
 
     void Start()
     {
-        cameraStart = transform;
         if (!camComp.orthographic)
             Debug.LogWarning("TopDownCamera is not attached to an orthographic camera");
     }
+    private void OnEnable()
+    {
+        CenterCamera();
+        ResetCamera();
+    }
 
-    void Update()
+    void FixedUpdate()
     {
         ProcessInput();
     }
@@ -107,10 +111,7 @@ public class TopDownCamera : MonoBehaviour
         Vector3 goalPos = player.gameObject.transform.position + offset;
 		transform.rotation = Quaternion.Euler(pitch, yaw, 0f);
 		transform.position = goalPos;
-    }
 
-    private void OnEnable()
-    {
-        CenterCamera();
+        cameraStart = transform;
     }
 }
