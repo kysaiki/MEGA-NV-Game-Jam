@@ -18,6 +18,14 @@ public class GameCameraControl : MonoBehaviour
     [SerializeField] private float LaunchRotateAmount = -15.0f;
 
 
+    private Transform camTransform;
+    private Vector3 originalPosition;
+    private float shakeDuration = 0f;
+    private float shakeMagnitude = 0.7f;
+    private float dampingSpeed = 1.0f;
+
+
+
     int mode = 0;
 
     // Start is called before the first frame update
@@ -31,6 +39,18 @@ public class GameCameraControl : MonoBehaviour
         if (mode == 0) ProcessAimInput();
         else if (mode == 1) ProcessLaunchInput();
         else ActivateFinishCamera();
+
+        if (shakeDuration > 0)
+        {
+            camTransform.localPosition = originalPosition + Random.insideUnitSphere * shakeMagnitude;
+
+            shakeDuration -= Time.deltaTime * dampingSpeed;
+        }
+        else
+        {
+            shakeDuration = 0f;
+            camTransform.localPosition = originalPosition;
+        }
     }
 
     void ProcessAimInput()
@@ -58,6 +78,12 @@ public class GameCameraControl : MonoBehaviour
         if (canMoveCameraUp && canMoveCameraDown) Camera.main.transform.Translate(0.0f, zoom, 0.0f, Space.World);
     }
 
+    public void ShakeCamera(float duration, float magnitude)
+    {
+        shakeDuration = duration;
+        shakeMagnitude = magnitude;
+    }
+
     public void ActivateFinishCamera()
     {
         mode = 2;
@@ -79,5 +105,7 @@ public class GameCameraControl : MonoBehaviour
     {
         transform.position = CameraStart.position;
     }
+
+    
 
 }

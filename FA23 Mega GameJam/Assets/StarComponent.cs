@@ -16,6 +16,7 @@ public class StarComponent : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Debug.Log("Collected");
+            AudioManager.instance.PlaySFX(AudioManager.SoundEffect.Collect);
             LevelState.DecrementCollectible();
             Destroy(this.gameObject);
         }
