@@ -8,21 +8,26 @@ public class LevelStateComponent : MonoBehaviour
     [SerializeField] private Transform LevelMaxTransform;
     [SerializeField] private GameObject Rocket;
     [SerializeField] private float LevelTime;
-
+    [SerializeField] private int currLevel;
     [SerializeField] private GameCameraControl CameraControl;
-
+    public GameObject failScreen;
+    public GameObject winScreen;
 
     public int RequiredCollectibles = 0;
     bool RocketHitObstacle = false;
     float Timer = 0.0f;
     bool completed = false;
 
-    // Update is called once per frame
+    private void Start()
+    {
+        RequiredCollectibles = GameManager.GetObjective(currLevel);
+    }
+
     void Update()
     {   
         if (RocketIsOutOfBounds() || LevelTimeExceeded())
         {
-            Debug.Log("FAILED");
+            failScreen.SetActive(true);
         }
     }
 
@@ -49,7 +54,7 @@ public class LevelStateComponent : MonoBehaviour
     {
         if (!RocketIsOutOfBounds() && !LevelTimeExceeded() && AllCollectiblesCollected())
         {
-            Debug.Log("COMPLETE!");
+            winScreen.SetActive(true);
             CameraControl.ActivateFinishCamera();
             Destroy(Rocket);
             completed = true;
@@ -70,4 +75,19 @@ public class LevelStateComponent : MonoBehaviour
     // {
     //     if (collision.gameObject.tag == "Obstacle") RocketHitObstacle = true;
     // }
+
+    public void NextLevel()
+    {
+        GameManager.WinLevel();
+    }
+
+    public void FailLevel()
+    {
+        GameManager.FailLevel();
+    }
+
+    public void MainMenu()
+    {
+        SceneManage.LoadMainMenu();
+    }
 }
