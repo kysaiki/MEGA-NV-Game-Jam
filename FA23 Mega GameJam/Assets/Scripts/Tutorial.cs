@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Tutorial : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class Tutorial : MonoBehaviour
     [SerializeField] private bool showAimTutorial; 
     [SerializeField] private bool showLaunchTutorial;
     [SerializeField] private bool showSteerTutorial;
+    [SerializeField] private TMP_Text spaceTxt;
+    [SerializeField] private TMP_Text launchText;
 
     private void Start()
     {
@@ -40,6 +43,8 @@ public class Tutorial : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space) && spaceBar.enabled)
         {
             spaceBarAnim.Play("FadeOut");
+            spaceTxt.enabled = false;
+            launchText.enabled = false;
         }
         if (Input.GetAxis("Horizontal") > 0 && arrows.enabled && !arrowAnim.GetCurrentAnimatorStateInfo(0).IsName("FadeOut"))
         {
