@@ -25,11 +25,13 @@ public static class GameManager
 
     public static void FailLevel()
     {
+        AudioManager.instance.StopEngineSound();
         SceneManage.Reload();
     }
 
     public static void WinLevel()
     {
+        AudioManager.instance.StopEngineSound();
         SceneManage.LoadNextScene();
     }
 

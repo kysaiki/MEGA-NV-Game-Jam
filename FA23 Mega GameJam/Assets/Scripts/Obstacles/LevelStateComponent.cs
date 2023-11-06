@@ -10,6 +10,7 @@ public class LevelStateComponent : MonoBehaviour
     [SerializeField] private float LevelTime;
     [SerializeField] private int currLevel;
     [SerializeField] private GameCameraControl CameraControl;
+    [SerializeField] private bool levelFailed = false;
 
     public GameObject FuelSlider;
     public GameObject failScreen;
@@ -30,11 +31,13 @@ public class LevelStateComponent : MonoBehaviour
 
     void Update()
     {   
-        if (RocketIsOutOfBounds() || LevelTimeExceeded())
+        if ((RocketIsOutOfBounds() || LevelTimeExceeded()) && !levelFailed)
         {
             failScreen.SetActive(true);
             FuelSlider.gameObject.SetActive(false);
             AudioManager.instance.PlaySFX(AudioManager.SoundEffect.Lose);
+            Destroy(Rocket);
+            levelFailed = true;
         }
     }
 

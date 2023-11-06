@@ -31,6 +31,7 @@ public class LaunchTimerComponent : MonoBehaviour
     void UpdateText(string text)
     {
         CountdownText.text = text;
+        AudioManager.instance.PlaySFX(AudioManager.SoundEffect.UIButton);
     }
 
     public void ActivateTimer()
