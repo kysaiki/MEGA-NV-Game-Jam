@@ -10,6 +10,8 @@ public class LevelStateComponent : MonoBehaviour
     [SerializeField] private float LevelTime;
     [SerializeField] private int currLevel;
     [SerializeField] private GameCameraControl CameraControl;
+
+    [SerializeField] private GameObject Slider;
     public GameObject failScreen;
     public GameObject winScreen;
 

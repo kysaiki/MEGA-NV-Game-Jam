@@ -69,6 +69,7 @@ public class RocketBehavior : MonoBehaviour
             AudioManager.instance.PlaySFX(AudioManager.SoundEffect.Lose);
             Destroy(this.gameObject);
             Debug.Log("COLLIDED");
+            FuelMeter.gameObject.SetActive(false);
         }
     }
 }
